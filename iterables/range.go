@@ -1,6 +1,8 @@
 package iterables
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func Range(args ...int) Iterable[int] {
 
@@ -20,8 +22,8 @@ func Range(args ...int) Iterable[int] {
 		return range3(start, stop, step)
 	}
 
-	return Iterable[int]{
-		invalidIterable{fmt.Errorf("Invalid range: too many arguments")}}
+	invalid := invalidIterable[int]{fmt.Errorf("Invalid range: too many arguments")}
+	return Iterable[int]{&invalid}
 }
 
 func range0() Iterable[int] {

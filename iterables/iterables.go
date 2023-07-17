@@ -30,6 +30,11 @@ func (i *invalidIterable[T]) Next() (T, error) {
 	return *new(T), i.err
 }
 
+func (i Iterable[T]) Next() (T, error) {
+
+	return i.gen.Next()
+}
+
 func (i IterationStop) Error() string {
 	return "The iteration stopped"
 }
