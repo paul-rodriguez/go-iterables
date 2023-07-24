@@ -13,7 +13,7 @@ type filter[T any] struct {
 
 func (g *filter[T]) Next() (T, error) {
 
-	for true {
+	for {
 		item, err := g.source.Next()
 		if err != nil {
 			return *new(T), err
@@ -22,5 +22,4 @@ func (g *filter[T]) Next() (T, error) {
 			return item, nil
 		}
 	}
-	return *new(T), IterationStop{}
 }

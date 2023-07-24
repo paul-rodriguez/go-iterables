@@ -38,3 +38,8 @@ func (i Iterable[T]) Next() (T, error) {
 func (i IterationStop) Error() string {
 	return "The iteration stopped"
 }
+
+type result[T any] struct {
+	item T
+	err  error
+}

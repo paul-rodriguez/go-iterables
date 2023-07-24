@@ -5,8 +5,14 @@ type Pair[T any, U any] struct {
 	F1 U
 }
 
+func (p Pair[T, U]) Items() (T, U) {
+	return p.F0, p.F1
+}
+
 func Zip2[T any, U any](ts Iterable[T], us Iterable[U]) Iterable[Pair[T, U]] {
 
+	gen := zip2[T, U]{ts, us}
+	return Iterable[Pair[T, U]]{&gen}
 }
 
 type zip2[T any, U any] struct {
